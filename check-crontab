@@ -1,0 +1,72 @@
+#!/bin/bash
+
+VERSION=v0.1.0
+
+USER=""
+WARNING_LT=1
+CRITICAL_LT=0
+
+function getoptions() {
+    shift 1
+    while getopts u:w:c:v OPT; do
+        case $OPT in
+            u)
+                USER=$OPTARG;;
+            w)
+                WARNING_LT=$OPTARG;;
+            c)
+                CRITICAL_LT=$OPTARG;;
+        esac
+    done
+}
+
+function lines() {
+    if [[ $USER ]]; then
+        LINES="$(crontab -u $USER -l | wc -l | tr -d " ")"
+    else
+        LINES="$(crontab -l | wc -l | tr -d " ")"
+    fi
+
+    if [[ $LINES < $CRITICAL_LT ]]; then
+        exit 2
+    elif [[ $LINES < $WARNING_LT ]]; then
+        exit 1
+    fi
+
+    exit 0
+}
+
+function version() {
+    echo $VERSION
+    exit 0
+}
+
+function usage() {
+    cat <<EOF
+usage: check-crontab [subcommand] [options]...
+
+check-crontab lines [-u user] [-w num] [-c num]
+    Description:
+        alert when crontab lines count under threshold.
+
+    Options:
+        -u    crontab user select. (default: "")
+        -w    warning  threshold   (default: 1)
+        -c    critical threthold   (default: 0)
+
+check-crontab version
+    Description:
+        show version.
+EOF
+}
+
+case ${1} in
+    lines)
+        getoptions "$@";
+        lines ;;
+    version)
+        version;;
+    *)
+        usage;;
+esac
+
