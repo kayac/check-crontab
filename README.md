@@ -1,4 +1,24 @@
 # check-crontab
+## Description
+Checks for crontab lines.
+
+## Usage
+```
+check-crontab [subcommand] [options]...
+```
+
+### check-crontab lines [-u user] [-w num] [-c num]
+    Description:
+        alert when crontab lines count under threshold.
+
+    Options:
+        -u    crontab user select. (default: "")
+        -w    warning  threshold   (default: 1)
+        -c    critical threthold   (default: 0)
+
+### check-crontab version
+    Description:
+        show version.
 
 ## License
 License
