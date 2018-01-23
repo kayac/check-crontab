@@ -13,8 +13,8 @@ check-crontab [subcommand] [options]...
 
     Options:
         -u    crontab user select. (default: "")
-        -w    warning  threshold   (default: 1)
-        -c    critical threthold   (default: 0)
+        -w    warning  threshold   (default: 0)
+        -c    critical threthold   (default: 1)
 
 ### check-crontab version
     Description:
