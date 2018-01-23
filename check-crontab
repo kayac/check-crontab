@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=v0.0.1
+VERSION=v0.1.0
 
 USER=""
 WARNING_LT=0
