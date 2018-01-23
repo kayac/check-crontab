@@ -3,8 +3,8 @@
 VERSION=v0.0.1
 
 USER=""
-WARNING_LT=1
-CRITICAL_LT=0
+WARNING_LT=0
+CRITICAL_LT=1
 
 function getoptions() {
     shift 1
@@ -51,8 +51,8 @@ check-crontab lines [-u user] [-w num] [-c num]
 
     Options:
         -u    crontab user select. (default: "")
-        -w    warning  threshold   (default: 1)
-        -c    critical threthold   (default: 0)
+        -w    warning  threshold   (default: 0)
+        -c    critical threthold   (default: 1)
 
 check-crontab version
     Description:
