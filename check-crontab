@@ -3,8 +3,8 @@
 VERSION=v0.0.1
 
 USER=""
-WARNING_LT=1
-CRITICAL_LT=0
+WARNING_LT=0
+CRITICAL_LT=1
 
 function getoptions() {
     shift 1
